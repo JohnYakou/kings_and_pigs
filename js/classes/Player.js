@@ -26,12 +26,16 @@ class Player{
     }
 
     update(){
+        // pour que le "bonhomme" aille à gauche et à droite
+        this.position.x += this.velocity.x;
         // gravity
         this.position.y += this.velocity.y;
+        // pour empecher au "bonhomme" d'être bloqué lorsqu'il saute
+        this.sides.bottom = this.position.y + this.height;
+
         // pour empécher le carré de traverser l'écran
         if(this.sides.bottom + this.velocity.y < canvas.height){
             this.velocity.y += 1;
-            this.sides.bottom = this.position.y + this.height;
         }else this.velocity.y = 0;
     }
 }
